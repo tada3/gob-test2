@@ -27,7 +27,7 @@ func main() {
 
 	p := domain.Person{
 		Name: "Taro",
-		Id:   "123",
+		Id:   123,
 	}
 
 	test(p)
