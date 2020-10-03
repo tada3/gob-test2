@@ -17,25 +17,25 @@ func main() {
 		ps[i].Id = i
 	}
 
-	checkSize(ps)
+	checkSize2(ps)
 }
 
-func checkSize(p []domain.Person) {
-	b, err := serializeJSON(p)
+func checkSize2(p []domain.Person) {
+	b, err := serializeJSON2(p)
 	if err != nil {
 		panic(err)
 	}
 	fmt.Printf("xxx", b)
 	fmt.Println("JSON:", len(b))
 
-	b1, err := serializeGob(p)
+	b1, err := serializeGob2(p)
 	if err != nil {
 		panic(err)
 	}
 	fmt.Println("Gob:", len(b1))
 }
 
-func serializeJSON(p []domain.Person) ([]byte, error) {
+func serializeJSON2(p []domain.Person) ([]byte, error) {
 	b, err := json.Marshal(p)
 	if err != nil {
 		return nil, err
@@ -43,7 +43,7 @@ func serializeJSON(p []domain.Person) ([]byte, error) {
 	return b, nil
 }
 
-func serializeGob(p []domain.Person) ([]byte, error) {
+func serializeGob2(p []domain.Person) ([]byte, error) {
 	buf := &bytes.Buffer{}
 	enc := gob.NewEncoder(buf)
 	err := enc.Encode(p)
